@@ -1,29 +1,85 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MiTienda());
+void main() => runApp(MiAppRegistro());
 
-class MiTienda extends StatelessWidget {
-  const MiTienda({super.key});
+class MiAppRegistro extends StatelessWidget {
+  const MiAppRegistro({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          leading: Icon(Icons.account_circle_rounded),
-          leadingWidth: 100, // default is 56
-          title: Text('Tienda de Raul 269'),
-          backgroundColor: const Color.fromARGB(255, 207, 255, 34),
-            actions: [
-                Icon(Icons.more_vert),
-            ],
-          centerTitle: true,
-        ),
-        body: Center(
-          child: Text("Lista de productos disponibles"),
+      title: "Registro Nava",
+      theme: ThemeData(primarySwatch: Colors.blue),
+      // Rutas nombradas
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const PantallaBienvenida(),
+        '/datos': (context) => const PantallaDatos(),
+        '/final': (context) => const PantallaFinal(),
+      },// fin rutas
+    );
+  } // fin widget build
+}// fin clase MiAppRegistro
+
+class PantallaBienvenida extends StatelessWidget {
+  const PantallaBienvenida({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Bienvenido Raul CBTis 269'),
+        backgroundColor: Colors.amber,
+      ),
+     body: Center(
+      child: ElevatedButton(
+        onPressed: () => Navigator.pushNamed(context, '/datos'),
+        child: Text("Empezar Registro - Raul CBTis 269"),
+      ),
+     ),
+
+    );
+  }
+}// fin pantalla binvenida
+
+class PantallaDatos extends StatelessWidget {
+  const PantallaDatos({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Datos Personales - Raul CBTis 269'),
+        backgroundColor: Colors.cyanAccent,
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () => Navigator.pushNamed(context, '/final'),
+          child: Text("Finalizar Registro - Raul CBTis 269"),
         ),
       ),
+    );
+  }
+}// fin pantalla datos
+
+class PantallaFinal extends StatelessWidget {
+  const PantallaFinal({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Final Raul CBTis 269'),
+        backgroundColor: Colors.greenAccent,
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () => Navigator.pushNamed(context, '/'),
+          child: Text("Volver a Bienvenida"),
+        )
+
+      )
     );
   }
 }
