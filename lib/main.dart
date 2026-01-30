@@ -5,7 +5,7 @@ void main() {
     MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: Text('Raul CBTis 269'), centerTitle: true),
-        body: Center(child: Text("Bienvenido Raul")),
+        body: Center(child: Text("Bienvenido Raul Cbtis 269")),
       ),
     ),
   );
