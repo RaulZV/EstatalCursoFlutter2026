@@ -1,6 +1,7 @@
 # myapp
 
 A new Flutter project.
+<img width="555" height="504" alt="image" src="https://github.com/user-attachments/assets/c33c3ecf-8067-4e1c-b934-3edc8a2adaed" />
 
 ## Getting Started
 
