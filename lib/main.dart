@@ -1,91 +1,66 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(AppViajes());
+void main() {
+  runApp(const MiApp());
+}
 
-class AppViajes extends StatelessWidget {
-  const AppViajes({super.key});
+class MiApp extends StatelessWidget {
+  const MiApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      // TEMA Y COLOR
-      theme: ThemeData(
-        primarySwatch: Colors.indigo,
-        scaffoldBackgroundColor: Colors.grey[200],
-      ),
-      home: PantallaInicio(),
+      home: PerfilScreen(),
     );
   }
-}// fin clase AppViajes
+}// fin clase MiApp
 
-class PantallaInicio extends StatelessWidget {
-  const PantallaInicio({super.key});
+class PerfilScreen extends StatelessWidget {
+  const PerfilScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Destinos Turísticos RaulZV Cbtis 269"),
-        backgroundColor: Colors.blue,
-        ),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        // COLUMNA PRINCIPAL
-        child: Column(
-          children: [
-            // FILA 1
-            Row(
-              children: [
-                Expanded(child: TarjetaLugar(
-                  titulo: "París, Francia,RaulZV Cbtis 269",
-                  desc: "La ciudad del amor y la Torre Eiffel.",
-                  url: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=500&q=80",
-                )),
-              ],
-            ),
-            // FILA 2
-            Row(
-              children: [
-                Expanded(child: TarjetaLugar(
-                  titulo: "Roma, Italia RaulZV Cbtis 269",
-                  desc: "Historia viva en cada esquina.",
-                  url: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=500&q=80",
-                )),
-              ],
-            ),
-
-          ],
+        title: const Text('Perfil de Usuario RaulZV Cbtis 269'),
+        
+        backgroundColor: Colors.amber,
+      ),
+      body: Center(
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          margin: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+            color: Colors.cyan,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Row(
+            children: [
+              const CircleAvatar(
+                radius: 40,
+                backgroundImage: NetworkImage(
+                  'https://www.gstatic.com/flutter-onestack-prototype/genui/example_1.jpg',
+                ),
+              ),
+              const SizedBox(width: 20),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: const [
+                    Text('RaulZV Cbtis 269',
+                        style:
+                            TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                    Text('Desarrollador Flutter del Cbtis 269'),
+                    Text('raul.zamora@cbtis269.edu.mx'),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
   }
-}// fin de la clase PantallaInicio
-
-class TarjetaLugar extends StatelessWidget {
-  final String titulo, desc, url;
-  const TarjetaLugar({super.key, required this.titulo, required this.desc, required this.url});
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      elevation: 5,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row( // Row dentro de la card para poner imagen a la izquierda
-          children: [
-            Image.network(url, width: 80, height: 80, fit: BoxFit.cover),
-            SizedBox(width: 15),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(titulo, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-                Text(desc),
-              ],
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}// fin de la clase TarjetaLugar
+}// fin clase PerfilScreen
